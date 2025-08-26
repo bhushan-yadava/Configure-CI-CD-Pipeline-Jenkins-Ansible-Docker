@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-user/your-repo.git'
+                git 'https://github.com/bhushan-yadava/Configure-CI-CD-Pipeline-Jenkins-Ansible-Docker.git'
             }
         }
 
