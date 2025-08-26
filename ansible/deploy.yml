@@ -1,0 +1,17 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Stop existing container
+      shell: docker rm -f myapp || true
+
+    - name: Copy Docker image
+      copy:
+        src: ../app-image.tar
+        dest: /tmp/app-image.tar
+
+    - name: Load Docker image
+      shell: docker load -i /tmp/app-image.tar
+
+    - name: Run container
+      shell: docker run -d --name myapp -p 80:3000 app:latest
